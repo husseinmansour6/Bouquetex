@@ -1,0 +1,84 @@
+
+@media (max-width: 450px) {
+  .login {
+    width: 100%;
+    height: 500px;
+    position: relative;
+  }
+  .login-h1 {
+    font-family: "Roboto Slab", serif;
+    font-size: 60px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgb(66, 62, 74);
+   
+  }
+  .login-content {
+    text-align: center;
+    width: 100%;
+  }
+  .login-form {
+    text-align: center;
+    width: 100%;
+    margin-top: 7%;
+  }
+  input {
+    width: 300px;
+    height: 57px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: whitesmoke;
+    border-bottom: 1px solid rgb(66, 62, 74);
+    font-family: "Roboto Slab", serif;
+    color: rgb(66, 62, 74);
+  }
+  .profile {
+    width: 100%;
+    height: 500px;
+    position: relative;
+  }
+}
+@media (min-width: 1288px) {
+  .login {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    top: 162px;
+    display: flex;
+  }
+  .login-h1 {
+    font-family: "Roboto Slab", serif;
+    font-size: 68px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgb(66, 62, 74);
+    border-right: 1px solid rgb(66, 62, 74);
+    line-height: 300px;
+    margin-top: 100px;
+  }
+  .login-content {
+    text-align: center;
+    width: 50%;
+  }
+  .login-form {
+    text-align: center;
+    width: 50%;
+    margin-top: 7%;
+  }
+  input {
+    width: 570px;
+    height: 57px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: whitesmoke;
+    border-bottom: 1px solid rgb(66, 62, 74);
+    font-family: "Roboto Slab", serif;
+    color: rgb(66, 62, 74);
+  }
+  .profile {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    top: 162px;
+  }
+}

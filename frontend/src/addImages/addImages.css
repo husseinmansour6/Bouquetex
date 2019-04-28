@@ -1,0 +1,91 @@
+* {
+  font-family: "Roboto Slab", serif;
+}
+@media (max-width: 450px) {
+  .img-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .prevImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    padding: 10px;
+  }
+
+  .addImagesPage {
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+  }
+
+  .add-img-form {
+    font-family: "Roboto Slab", serif;
+    text-align: -webkit-center;
+  }
+  .submit-img {
+    width: 100px;
+    border: 1px solid;
+  }
+  input[type="file"] {
+    height: 50px;
+    width: fit-content;
+    /* border: 1px solid; */
+    background-color: whitesmoke;
+  }
+
+  input[type="file"]::-webkit-file-upload-button {
+    height: 50px;
+    width: fit-content;
+    /* border: 1px solid; */
+    background-color: whitesmoke;
+  }
+  .logoutBtn {
+    width: 100px;
+    height: 50px;
+  }
+}
+@media (min-width: 1288px) {
+  .img-flex {
+    display: flex;
+  }
+  .prevImg {
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    padding: 10px;
+  }
+
+  .addImagesPage {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+  }
+
+  .add-img-form {
+    font-family: "Roboto Slab", serif;
+    text-align: -webkit-center;
+  }
+  .submit-img {
+    width: 100px;
+    border: 1px solid;
+  }
+  input[type="file"] {
+    height: 50px;
+    width: fit-content;
+    /* border: 1px solid; */
+    background-color: whitesmoke;
+  }
+
+  input[type="file"]::-webkit-file-upload-button {
+    height: 50px;
+    width: fit-content;
+    /* border: 1px solid; */
+    background-color: whitesmoke;
+  }
+  .logoutBtn {
+    width: 100px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,246 @@
+@media (max-width: 450px) {
+  #cf {
+    height: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  #cf img {
+    height: 300px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    -webkit-animation: cf4FadeInOut;
+    animation-timing-function: ease-in-Out;
+    animation-iteration-count: infinite;
+    animation-duration: 16s;
+    animation-direction: alternate;
+  }
+
+  @-webkit-keyframes cf4FadeInOut {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #cf img:nth-of-type(1) {
+    animation-delay: 16s;
+  }
+  #cf img:nth-of-type(2) {
+    animation-delay: 12s;
+  }
+  #cf img:nth-of-type(3) {
+    animation-delay: 8s;
+  }
+  #cf img:nth-of-type(4) {
+    animation-delay: 4s;
+  }
+  .services {
+    position: relative;
+    text-align: -webkit-center;
+  }
+  .services-info {
+    align-items: center;
+  }
+  .s-info-img {
+    width: 90%;
+    height: 300px;
+    border-radius: 50%;
+    opacity: 0.8;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+  }
+  .test {
+    width: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .s-info-img:hover {
+    opacity: 1;
+    transform: scale(1.07);
+    -ms-transform: scale(1.07);
+    -moz-transform: scale(1.07);
+    -webkit-transform: scale(1.07);
+    transition: 0.5s;
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+  }
+
+  .overlay {
+    font-family: "Roboto Slab", serif;
+    position: absolute;
+    color: white;
+    font-size: 53px;
+    padding: 20px;
+    top: 180px;
+    margin-left: 127px;
+  }
+
+  .services-h1 {
+    font-family: "Roboto Slab", serif;
+    font-size: 68px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgb(66, 62, 74);
+    margin-top: 15px;
+    /* text-align: center; */
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(66, 62, 74);
+    width: fit-content;
+    margin-left: 0%;
+  }
+  .img {
+    width: 50%;
+    height: 500px;
+  }
+  .img-style {
+    width: 100%;
+    height: inherit;
+  }
+  .about-text {
+    width: 50%;
+    height: 500px;
+  }
+}
+
+@media (min-width: 1288px) {
+  #cf {
+    height: 634px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .alt-text {
+    position: relative;
+    top: 50%;
+    color: white;
+    z-index: 1;
+    opacity: 1;
+    font-size: 40px;
+  }
+  #cf img {
+    top: 162px;
+    height: 634px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    -webkit-animation: cf4FadeInOut;
+    animation-timing-function: ease-in-Out;
+    animation-iteration-count: infinite;
+    animation-duration: 16s;
+    animation-direction: alternate;
+  }
+
+  @-webkit-keyframes cf4FadeInOut {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #cf img:nth-of-type(1) {
+    animation-delay: 16s;
+  }
+  #cf img:nth-of-type(2) {
+    animation-delay: 12s;
+  }
+  #cf img:nth-of-type(3) {
+    animation-delay: 8s;
+  }
+  #cf img:nth-of-type(4) {
+    animation-delay: 4s;
+  }
+
+  .services {
+    top: 161px;
+    position: relative;
+    text-align: -webkit-center;
+  }
+  .services-info {
+    align-items: center;
+  }
+  .s-info-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    opacity: 0.8;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+  }
+  .test {
+    width: 33.33%;
+    overflow: hidden;
+    display: inline-block;
+    height: 405px;
+  }
+
+  .s-info-img:hover {
+    opacity: 1;
+    transform: scale(1.07);
+    -ms-transform: scale(1.07);
+    -moz-transform: scale(1.07);
+    -webkit-transform: scale(1.07);
+    transition: 0.5s;
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+  }
+
+  .overlay {
+    font-family: "Roboto Slab", serif;
+    position: absolute;
+    color: white;
+    font-size: 53px;
+    padding: 20px;
+    top: 180px;
+    margin-left: 127px;
+  }
+
+  .services-h1 {
+    font-family: "Roboto Slab", serif;
+    font-size: 68px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgb(66, 62, 74);
+    margin-top: 15px;
+    /* text-align: center; */
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(66, 62, 74);
+    width: fit-content;
+    margin-left: 0%;
+  }
+  .img {
+    width: 50%;
+    height: 500px;
+  }
+  .img-style {
+    width: 100%;
+    height: inherit;
+  }
+  .about-text {
+    width: 50%;
+    height: 500px;
+  }
+}
