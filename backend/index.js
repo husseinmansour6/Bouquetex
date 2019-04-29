@@ -7,7 +7,7 @@ var bodyParser = require("body-parser")
 var url = "mongodb://admin:admin123@ds123635.mlab.com:23635/bouquetex"
 var dbs = undefined
 var ObjectID = require("mongodb").ObjectID
-// let ObjectID = require("mongodb").ObjectID
+// var ObjectID = require("mongodb").ObjectID
 MongoClient.connect(
   url,
   { useNewUrlParser: true },
@@ -18,14 +18,14 @@ MongoClient.connect(
   }
 )
 
-let generateId = () => {
+var generateId = () => {
   return Math.floor(Math.random() * 10000000000)
 }
-let itemData = []
-let fs = require("fs")
-let multer = require("multer")
+var itemData = []
+var fs = require("fs")
+var multer = require("multer")
 app.use(cors())
-let upload = multer({ dest: __dirname + "/images/" })
+var upload = multer({ dest: __dirname + "/images/" })
 app.use(express.static(__dirname + "/images"))
 
 app.post("/addOneImage", upload.single("product-image"), (req, res) => {
@@ -38,7 +38,7 @@ app.post("/addOneImage", upload.single("product-image"), (req, res) => {
   console.log("new file location", req.file.path)
 
   // Get the extension of the file so we can rename it
-  let extension = req.file.originalname.split(".").pop()
+  var extension = req.file.originalname.split(".").pop()
 
   // Rename the file so that it has the correct extension
   fs.rename(req.file.path, req.file.path + "." + extension, () => {})
@@ -46,7 +46,7 @@ app.post("/addOneImage", upload.single("product-image"), (req, res) => {
   // In this case the only one is product-description
   console.log("body", req.body)
   // This is the data that needs to be stored
-  let itemToStore = {
+  var itemToStore = {
     path: "/" + req.file.filename + "." + extension,
     typeOfCloth: req.body.typeOfCloth,
     costPerMeter: req.body.costPerMeter
@@ -69,7 +69,7 @@ app.post("/addImages", upload.array("imgs[]", 5), (req, res) => {
     paths: []
   }
   req.files.forEach(file => {
-    let extension = file.originalname.split(".").pop()
+    var extension = file.originalname.split(".").pop()
     fs.rename(file.path, file.path + "." + extension, () => {})
     // console.log("body", req.body)
 
@@ -86,7 +86,7 @@ app.post("/addImages", upload.array("imgs[]", 5), (req, res) => {
     // Object inserted successfully.
     var objectId = itemToStore._id // this will return the id of object inserted
     console.log("object id: ", objectId, "  paths: ", itemToStore.paths)
-    let dataToSend = { _id: objectId, paths: itemToStore.paths }
+    var dataToSend = { _id: objectId, paths: itemToStore.paths }
     console.log("dataToSend :", dataToSend)
     res.send(JSON.stringify(dataToSend))
   })
@@ -110,17 +110,17 @@ app.post("/delGallery", (req, res) => {
   console.log(
     "************************* Delete Gallery *************************"
   )
-  let body = JSON.parse(req.body)
-  let gid = body.id
+  var body = JSON.parse(req.body)
+  var gid = body.id
   console.log("id: ", gid)
   dbs.collection("images").deleteOne({ _id: ObjectID(gid) })
 })
 app.post("/login", (req, res) => {
   console.log("************************* LOGIN *************************")
-  let reqBody = JSON.parse(req.body)
+  var reqBody = JSON.parse(req.body)
   console.log("parsed in login: ", reqBody)
-  let reqUn = reqBody.username
-  let reqPass = reqBody.password
+  var reqUn = reqBody.username
+  var reqPass = reqBody.password
   console.log("Username: ", reqUn, " Password: ", reqPass)
   dbs
     .collection("admin")
@@ -128,8 +128,8 @@ app.post("/login", (req, res) => {
     .toArray((err, result) => {
       if (err) throw err
       console.log("result: ", result)
-      let un = result[0].username
-      let pw = result[0].password
+      var un = result[0].username
+      var pw = result[0].password
       console.log("un: ", un, " pw: ", pw)
       if (reqBody.username !== un && reqBody.password !== pw) {
         res.send(
@@ -157,9 +157,9 @@ app.post("/login", (req, res) => {
 
 app.post("/updateData", (req, res) => {
   console.log("************************ update data *****************")
-  let reqBody = JSON.parse(req.body)
+  var reqBody = JSON.parse(req.body)
   console.log("req body: ", reqBody)
-  let passToChange = reqBody.oldPassword
+  var passToChange = reqBody.oldPassword
   console.log("old pass: ", passToChange)
   dbs
     .collection("admin")
@@ -185,7 +185,7 @@ app.post("/updateData", (req, res) => {
 app.post("/delAddedImage", (req, res) => {
   console.log("************************ delete added image *****************")
   console.log("path: ", JSON.parse(req.body))
-  let pathToDel = JSON.parse(req.body)
+  var pathToDel = JSON.parse(req.body)
   console.log("path to del: ", pathToDel)
   // dbs.collection("images").deleteOne({ paths: pathToDel })
 
@@ -194,7 +194,7 @@ app.post("/delAddedImage", (req, res) => {
     .find({ paths: pathToDel })
     .toArray((err, result) => {
       console.log("result: ", result[0])
-      let index = result[0].paths.indexOf(pathToDel)
+      var index = result[0].paths.indexOf(pathToDel)
       console.log("index: ", index)
       dbs
         .collection("images")
@@ -203,7 +203,7 @@ app.post("/delAddedImage", (req, res) => {
           { $pull: { paths: { $in: [result[0].paths[index]] } } }
         )
 
-      // let index = result[0].paths.indexOf(pathToDel)
+      // var index = result[0].paths.indexOf(pathToDel)
       // console.log("index: ", index)
       // result[0].paths.splice(index, 1)
       // console.log(result[0].paths)
@@ -222,7 +222,7 @@ app.get("/getImages", (req, res) => {
 })
 app.post("/getImagesGallery", (req, res) => {
   console.log("************************ get images Gallery*****************")
-  let reqBody = JSON.parse(req.body)
+  var reqBody = JSON.parse(req.body)
   console.log("reqbody: ", reqBody)
 
   dbs
