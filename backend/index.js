@@ -1,12 +1,12 @@
-let express = require("express")
-let app = express()
-let cors = require("cors")
+var express = require("express")
+var app = express()
+var cors = require("cors")
 const MongoClient = require("mongodb").MongoClient
 app.use(cors({ credentials: true, origin: "http://localhost:8080" }))
-let bodyParser = require("body-parser")
-let url = "mongodb://admin:admin123@ds123635.mlab.com:23635/bouquetex"
-let dbs = undefined
-let ObjectID = require("mongodb").ObjectID
+var bodyParser = require("body-parser")
+var url = "mongodb://admin:admin123@ds123635.mlab.com:23635/bouquetex"
+var dbs = undefined
+var ObjectID = require("mongodb").ObjectID
 // let ObjectID = require("mongodb").ObjectID
 MongoClient.connect(
   url,
