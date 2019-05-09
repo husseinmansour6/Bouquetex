@@ -5,26 +5,26 @@ import { Link } from "react-router-dom"
 class UnconnectedGalleries extends Component {
   constructor(props) {
     super(props)
+
     this.generateTable = this.generateTable.bind(this)
     this.deleteGallery = this.deleteGallery.bind(this)
   }
   componentDidMount() {
     console.log("im in component did mount", this.props.images)
-    if (this.props.images === undefined) {
-      // console.log("empty")
-      fetch("http://localhost:4000/getImages")
-        .then(response => {
-          return response.text()
+
+    // console.log("empty")
+    fetch("http://localhost:4000/getImages")
+      .then(response => {
+        return response.text()
+      })
+      .then(response => {
+        let parsedResponse = JSON.parse(response)
+        console.log("parsed in home: ", parsedResponse)
+        this.props.dispatch({
+          type: "all-images",
+          actionData: parsedResponse
         })
-        .then(response => {
-          let parsedResponse = JSON.parse(response)
-          console.log("parsed in home: ", parsedResponse)
-          this.props.dispatch({
-            type: "all-images",
-            actionData: parsedResponse
-          })
-        })
-    }
+      })
   }
   deleteGallery(id) {
     console.log("gid: ", id)

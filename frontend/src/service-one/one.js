@@ -11,38 +11,40 @@ class UnconnectedOne extends Component {
     this.renderCloths = this.renderCloths.bind(this)
   }
   componentDidMount() {
-    console.log(this.state.cloths.length)
-    if (this.state.cloths.length === 0) {
+    console.log(this.props.clothsList)
+    if (this.props.clothsList === undefined) {
       fetch("http://localhost:4000/getCloths")
         .then(response => {
           return response.text()
         })
         .then(response => {
-          let pardesRes = JSON.parse(response)
-          console.log("parsed Response: ", pardesRes.cloths)
+          let parsedRes = JSON.parse(response)
+          console.log("parsed Response: ", parsedRes.cloths)
           this.props.dispatch({
             type: "get-cloths",
-            actionData: pardesRes.cloths
+            actionData: parsedRes.cloths
           })
-          this.setState({ cloths: pardesRes.cloths })
+          this.setState({ cloths: parsedRes.cloths })
         })
     }
   }
 
   renderCloths() {
-    return this.state.cloths.map(cloth => {
-      console.log("cloth: ", cloth)
-      return (
-        <Cloth
-          path={cloth.path}
-          cost={cloth.costPerMeter}
-          type={cloth.typeOfCloth}
-        />
-      )
-    })
+    if (this.props.clothsList !== undefined) {
+      return this.props.clothsList.map(cloth => {
+        console.log("cloth: ", cloth)
+        return (
+          <Cloth
+            path={cloth.path}
+            cost={cloth.costPerMeter}
+            type={cloth.typeOfCloth}
+            clothId={cloth._id}
+          />
+        )
+      })
+    }
   }
   render() {
-
     return (
       <div
         style={{

@@ -44,23 +44,38 @@ class Profile extends Component {
     return (
       <div>
         <h1>Change Password </h1>
-        <form onSubmit={this.submitChangePassword}>
-          <input
-            type="text"
-            onChange={this.handleOldPassChange}
-            placeholder="Old password"
-            value={this.state.oldPass}
-          />
-          <br />
-          <input
-            type="text"
-            onChange={this.handleNewPassChange}
-            placeholder="new password"
-            value={this.state.newPass}
-          />
-          <br />
-          <input type="submit" className="" value="Save" />
+        <form>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Old Password</label>
+            <div className="col-sm-2">
+              <input
+                type="text"
+                className="form-control"
+                onChange={this.handleOldPassChange}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">New Password</label>
+            <div className="col-sm-2">
+              <input
+                type="text"
+                className="form-control"
+                onChange={this.handleNewPassChange}
+              />
+            </div>
+          </div>
+
+          <div>
+            <button
+              onClick={this.submitChangePassword}
+              className="btn btn-dark mb-3"
+            >
+              Save
+            </button>
+          </div>
         </form>
+        
       </div>
     )
   }

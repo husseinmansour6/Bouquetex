@@ -26,39 +26,66 @@ var fs = require("fs")
 var multer = require("multer")
 app.use(cors())
 var upload = multer({ dest: __dirname + "/images/" })
+app.use(express.static(`${__dirname}/../build`))
 app.use(express.static(__dirname + "/images"))
 
-app.post("/addOneImage", upload.single("product-image"), (req, res) => {
-  // A file is created in ./images. Go check it out!
-  // Also, look at the output in the debug console
+app.post("/addCloth", upload.single("product-image"), (req, res) => {
   console.log("********************* Add Image  *****************")
-
   console.log(req.file)
-  // Multer generates a new random filename every time a file is uploaded
   console.log("new file location", req.file.path)
-
-  // Get the extension of the file so we can rename it
   var extension = req.file.originalname.split(".").pop()
-
-  // Rename the file so that it has the correct extension
   fs.rename(req.file.path, req.file.path + "." + extension, () => {})
-  // req.body contains all the form data fields that are not files
-  // In this case the only one is product-description
   console.log("body", req.body)
-  // This is the data that needs to be stored
   var itemToStore = {
     path: "/" + req.file.filename + "." + extension,
     typeOfCloth: req.body.typeOfCloth,
     costPerMeter: req.body.costPerMeter
   }
   console.log("we are adding", itemToStore)
-  // itemData needs to contain the file location and description
   itemData.push(itemToStore)
   dbs.collection("cloth").insertOne(itemToStore, function(err) {
     if (err) return err
   })
   console.log("updated itemData:", itemData)
-  res.send(JSON.stringify(itemData))
+  res.send(JSON.stringify(itemToStore))
+})
+app.post("/addBaradi", upload.single("product-image"), (req, res) => {
+  console.log("********************* Add baradi  *****************")
+  console.log(req.file)
+  console.log("new file location", req.file.path)
+  var extension = req.file.originalname.split(".").pop()
+  fs.rename(req.file.path, req.file.path + "." + extension, () => {})
+  console.log("body", req.body)
+  var itemToStore = {
+    path: "/" + req.file.filename + "." + extension,
+    costPerMeter: req.body.costPerMeter
+  }
+  console.log("we are adding", itemToStore)
+  itemData.push(itemToStore)
+  dbs.collection("baradi").insertOne(itemToStore, function(err) {
+    if (err) return err
+  })
+  console.log("updated itemData:", itemData)
+  res.send(JSON.stringify(itemToStore))
+})
+app.post("/addSalon", upload.single("product-image"), (req, res) => {
+  console.log("********************* Add salon  *****************")
+  console.log(req.file)
+  console.log("new file location", req.file.path)
+  var extension = req.file.originalname.split(".").pop()
+  fs.rename(req.file.path, req.file.path + "." + extension, () => {})
+  console.log("body", req.body)
+  var itemToStore = {
+    path: "/" + req.file.filename + "." + extension,
+    costPerMeter: req.body.costPerMeter
+  }
+  console.log("we are adding", itemToStore)
+  itemData.push(itemToStore)
+  dbs.collection("salon").insertOne(itemToStore, function(err) {
+    if (err) return err
+  })
+  console.log("updated itemData:", itemData)
+  res.send(JSON.stringify(itemToStore))
 })
 
 app.post("/addImages", upload.array("imgs[]", 5), (req, res) => {
@@ -103,6 +130,26 @@ app.get("/getCloths", (req, res) => {
       res.send(JSON.stringify({ success: true, cloths: result }))
     })
 })
+app.get("/getSalons", (req, res) => {
+  dbs
+    .collection("salon")
+    .find()
+    .toArray((err, result) => {
+      if (err) return err
+      console.log("result: ", result)
+      res.send(JSON.stringify({ success: true, salons: result }))
+    })
+})
+app.get("/getBaradi", (req, res) => {
+  dbs
+    .collection("baradi")
+    .find()
+    .toArray((err, result) => {
+      if (err) return err
+      console.log("result: ", result)
+      res.send(JSON.stringify({ success: true, baradi: result }))
+    })
+})
 
 app.use(bodyParser.raw({ type: "*/*" }))
 
@@ -114,6 +161,36 @@ app.post("/delGallery", (req, res) => {
   var gid = body.id
   console.log("id: ", gid)
   dbs.collection("images").deleteOne({ _id: ObjectID(gid) })
+})
+app.post("/delCloth", (req, res) => {
+  console.log(
+    "************************* Delete Cloth *************************"
+  )
+  var body = JSON.parse(req.body)
+  var cid = body.id
+  console.log("id: ", cid)
+  dbs.collection("cloth").deleteOne({ _id: ObjectID(cid) })
+  res.send(JSON.stringify({ success: true }))
+})
+app.post("/delSalon", (req, res) => {
+  console.log(
+    "************************* Delete Salon *************************"
+  )
+  var body = JSON.parse(req.body)
+  var sid = body.id
+  console.log("id: ", sid)
+  dbs.collection("salon").deleteOne({ _id: ObjectID(sid) })
+  res.send(JSON.stringify({ success: true }))
+})
+app.post("/delBaradi", (req, res) => {
+  console.log(
+    "************************* Delete baradi *************************"
+  )
+  var body = JSON.parse(req.body)
+  var bid = body.id
+  console.log("id: ", bid)
+  dbs.collection("baradi").deleteOne({ _id: ObjectID(bid) })
+  res.send(JSON.stringify({ success: true }))
 })
 app.post("/login", (req, res) => {
   console.log("************************* LOGIN *************************")
@@ -232,6 +309,11 @@ app.post("/getImagesGallery", (req, res) => {
       console.log("result: ", result)
       res.send(JSON.stringify(result))
     })
+})
+
+const path = require("path")
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"))
 })
 
 app.listen(4000, function() {

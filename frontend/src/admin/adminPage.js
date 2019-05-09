@@ -5,6 +5,8 @@ import { connect } from "react-redux"
 import AddImages from "../addImages/addImages"
 import "./admin.css"
 import AddCloth from "./addCloth"
+import AddSalon from "./addSalon"
+import AddBaradi from "./addBaradi"
 class UnconnectedAdminPage extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +27,7 @@ class UnconnectedAdminPage extends Component {
       return (
         <div style={{ position: "relative", top: 162 }}>
           <span>
-            <button className="btn btn-danger" onClick={this.handleLogout}>
+            <button className="btn btn-dark" onClick={this.handleLogout}>
               log out
             </button>
           </span>
@@ -51,6 +53,16 @@ class UnconnectedAdminPage extends Component {
                 Add Cloth
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" data-toggle="tab" href="#addSalon">
+                Add Salon
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" data-toggle="tab" href="#addBaradi">
+                Add Baradi
+              </a>
+            </li>
           </ul>
           <div id="myTabContent" className="tab-content">
             <div className="tab-pane fade active show" id="profile">
@@ -65,6 +77,12 @@ class UnconnectedAdminPage extends Component {
             </div>
             <div className="tab-pane fade" id="addCloth">
               <AddCloth />
+            </div>
+            <div className="tab-pane fade" id="addSalon">
+              <AddSalon />
+            </div>
+            <div className="tab-pane fade" id="addBaradi">
+              <AddBaradi />
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-
-class AddCloth extends Component {
+import { connect } from "react-redux"
+class UnconnectedAddCloth extends Component {
   constructor(props) {
     super(props)
     this.fileChangeHandler = this.fileChangeHandler.bind(this)
@@ -35,7 +35,7 @@ class AddCloth extends Component {
     formData.append("typeOfCloth", this.state.typeOfColth)
     formData.append("costPerMeter", this.state.costPerMeter)
 
-    fetch("http://localhost:4000/addOneImage", {
+    fetch("http://localhost:4000/addCloth", {
       body: formData,
       method: "POST"
     })
@@ -44,23 +44,61 @@ class AddCloth extends Component {
       })
       .then(responseBody => {
         let parsed = JSON.parse(responseBody)
-        console.log("parsed : ", parsed)
-        // this.setState({ items: parsed })
+        console.log("parsed in add cloth: ", parsed)
+        console.log("formdata in add cloth: ", formData)
+        if (parsed.length !== 0) {
+          alert("Saved Successfully !!")
+          this.setState({ costPerMeter: "", typeOfColth: "" })
+          this.props.dispatch({
+            type: "add-cloth",
+            actionData: parsed
+          })
+        }
+
       })
   }
   render() {
     return (
       <React.Fragment>
-        <form onSubmit={this.submitHandler}>
-          <h1>Add Cloth</h1>
-          <h4>Uplode Image</h4>
-          <input type="file" onChange={this.fileChangeHandler} />
-          <h4>Type Of Cloth</h4>
-          <input type="text" onChange={this.typeOfClothChangeHandler} />
-          <h4>Cost per Meter</h4>
-          <input type="text" onChange={this.costChangeHandler} />
-          <br />
-          <input type="submit" />
+        <h1>Add Cloth</h1>
+        <form>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Uplode Image</label>
+            <div className="col-sm-2">
+              <input
+                type="file"
+                className="form-control-file"
+                onChange={this.fileChangeHandler}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Type Of Cloth</label>
+            <div className="col-sm-2">
+              <input
+                type="text"
+                className="form-control"
+                onChange={this.typeOfClothChangeHandler}
+                value={this.state.typeOfColth}
+              />
+            </div>
+          </div>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Cost per Meter</label>
+            <div className="col-sm-1">
+              <input
+                type="text"
+                className="form-control"
+                onChange={this.costChangeHandler}
+                value={this.state.costPerMeter}
+              />
+            </div>
+          </div>
+          <div>
+            <button onClick={this.submitHandler} className="btn btn-dark mb-3">
+              Save
+            </button>
+          </div>
         </form>
 
         {this.state.items.map(item => {
@@ -81,5 +119,5 @@ class AddCloth extends Component {
     )
   }
 }
-
+let AddCloth = connect()(UnconnectedAddCloth)
 export default AddCloth

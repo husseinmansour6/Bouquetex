@@ -11,9 +11,22 @@
   padding: 2px 5px 2px 5px;
   border-radius: 10px;
 }
+.text {
+  position: absolute;
+  width: 55px;
+  left: 146px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.card-img-overlay:hover .text {
+  opacity: 1;
+  cursor: pointer;
+}
 .card {
   margin: 5px;
   width: 346px;
+  height: 266px;
 }
 .card:hover {
 }

@@ -74,19 +74,19 @@ class UnconnectedHome extends Component {
             <div className="test">
               <Link to="/service-one">
                 <span className="alt-text">Cloth</span>
-                <img className="s-info-img" src="/images/2.jpg" />
+                <img className="s-info-img" src="/images/cloth.jpg" />
               </Link>
             </div>
             <div className="test">
               <Link to="/service-two">
                 <span className="alt-text">Salon</span>
-                <img className="s-info-img" src="/images/3.jpg" />
+                <img className="s-info-img" src="/images/salon.jpg" />
               </Link>
             </div>
             <div className="test">
               <Link to="service-three">
                 <span className="alt-text">Baradi</span>
-                <img className="s-info-img" src="/images/4.jpg" />
+                <img className="s-info-img" src="/images/baradi.jpg" />
               </Link>
             </div>
           </div>

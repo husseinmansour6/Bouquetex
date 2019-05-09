@@ -33,6 +33,24 @@ function reducer(state, action) {
         ...state,
         images: state.images.concat(action.actionData)
       }
+    case "add-cloth":
+      console.log("action: ", action)
+      return {
+        ...state,
+        cloths: state.cloths.concat(action.actionData)
+      }
+    case "add-salon":
+      console.log("action: ", action)
+      return {
+        ...state,
+        salons: state.salons.concat(action.actionData)
+      }
+    case "add-baradi":
+      console.log("action: ", action)
+      return {
+        ...state,
+        baradi: state.baradi.concat(action.actionData)
+      }
     case "all-images":
       console.log("action: ", action)
       return {
@@ -44,6 +62,48 @@ function reducer(state, action) {
       return {
         ...state,
         cloths: action.actionData
+      }
+    case "get-baradi":
+      console.log("action: ", action)
+      return {
+        ...state,
+        baradi: action.actionData
+      }
+    case "get-salons":
+      console.log("action: ", action)
+      return {
+        ...state,
+        salons: action.actionData
+      }
+    case "del-cloth":
+      console.log("action: ", action)
+      let newClothsList = state.cloths.filter(cloth => {
+        return cloth._id !== action.actionData.id
+      })
+      console.log("new cloths: ", newClothsList)
+      return {
+        ...state,
+        cloths: newClothsList
+      }
+    case "del-salon":
+      console.log("action: ", action)
+      let newSalonsList = state.salons.filter(salon => {
+        return salon._id !== action.actionData.id
+      })
+      console.log("new salons: ", newSalonsList)
+      return {
+        ...state,
+        salons: newSalonsList
+      }
+    case "del-baradi":
+      console.log("action: ", action)
+      let newBaradiList = state.baradi.filter(baradi => {
+        return baradi._id !== action.actionData.id
+      })
+      console.log("new salons: ", newBaradiList)
+      return {
+        ...state,
+        baradi: newBaradiList
       }
     case "del-gallery":
       console.log("action in del gallery: ", action)
@@ -82,7 +142,7 @@ class App extends Component {
           <div>
             <div className="header">
               <div className="logo-text">Bouquetex</div>
-              <div className="desc-text">Desc Text</div>
+              <div className="desc-text">Salon Marocain</div>
               <Nav />
             </div>
             <div className="content">

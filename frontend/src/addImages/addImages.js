@@ -32,6 +32,7 @@ class UnconnectedAddImages extends Component {
     let newState = this.state.items.filter(img => {
       return img !== this.state.items[this.state.items.indexOf(e.path)]
     })
+
     console.log("after: ", newState)
     this.setState({ items: newState })
   }
@@ -78,6 +79,8 @@ class UnconnectedAddImages extends Component {
     }
   }
 
+  
+
   render() {
     // console.log("id: ", this.props.match.params)
     console.log("props in add images: ", this.props)
@@ -88,11 +91,33 @@ class UnconnectedAddImages extends Component {
         <div className="addImagesPage">
           <div style={{ marginBottom: "10px" }}>
             <h1>Add maximum 5 images </h1>
-            <form onSubmit={this.submitHandler} className="add-img-form">
+            <form>
+              <div className="form-group row">
+                <label className="col-sm-2 col-form-label">Uplode Images</label>
+                <div className="col-sm-2">
+                  <input
+                    type="file"
+                    className="form-control-file"
+                    onChange={this.fileChangeHandler}
+                    multiple
+                  />
+                </div>
+              </div>
+
+              <div>
+                <button
+                  onClick={this.submitHandler}
+                  className="btn btn-dark mb-3"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+            {/* <form onSubmit={this.submitHandler} className="add-img-form">
               <input type="file" onChange={this.fileChangeHandler} multiple />
               <br />
               <input type="submit" className="submit-img" />
-            </form>
+            </form> */}
           </div>
 
           <div className="img-flex">
@@ -103,17 +128,26 @@ class UnconnectedAddImages extends Component {
                 "http://" + window.location.hostname + ":4000" + item
               console.log("image path", imagePath)
               return (
-                <div>
-                  <div>
-                    <img src={imagePath} className="prevImg" />
-                    <br />
+                <div className="card bg-dark text-white">
+                  <div className="card-img-overlay">
+                    <img src={imagePath} className="card-img" />
+                    <img
+                      id="top"
+                      className="text"
+                      src="/images/del.png"
+                      onClick={() => {
+                        this.handelDeleteImage({ path: item })
+                      }}
+                    />
+                    {/* {this.generateDeleteBtn()} */}
+                    {/* <br />
                     <button
                       onClick={() => {
                         this.handelDeleteImage({ path: item })
                       }}
                     >
                       delete
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               )
