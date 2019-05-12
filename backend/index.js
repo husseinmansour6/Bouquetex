@@ -26,8 +26,9 @@ var fs = require("fs")
 var multer = require("multer")
 app.use(cors())
 var upload = multer({ dest: __dirname + "/images/" })
-app.use(express.static(`${__dirname}/../build`))
-app.use(express.static(__dirname + "/images"))
+// app.use(express.static(`${__dirname}/../build`))
+// app.use(express.static(__dirname + "/images"))
+console.log("dir name: ", __dirname)
 
 app.post("/addCloth", upload.single("product-image"), (req, res) => {
   console.log("********************* Add Image  *****************")
@@ -192,7 +193,7 @@ app.post("/delBaradi", (req, res) => {
   dbs.collection("baradi").deleteOne({ _id: ObjectID(bid) })
   res.send(JSON.stringify({ success: true }))
 })
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
   console.log("************************* LOGIN *************************")
   var reqBody = JSON.parse(req.body)
   console.log("parsed in login: ", reqBody)
@@ -310,10 +311,13 @@ app.post("/getImagesGallery", (req, res) => {
       res.send(JSON.stringify(result))
     })
 })
+app.use(express.static("../frontend/build"))
+app.use(express.static(__dirname + "/images"))
 
 const path = require("path")
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
+  // res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
+  res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"))
 })
 
 app.listen(4000, function() {
