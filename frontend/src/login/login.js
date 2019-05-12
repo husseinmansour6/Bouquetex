@@ -30,7 +30,7 @@ class UnconnectedLogin extends Component {
     )
     console.log(this.state)
     let requestedBody = this.state
-    fetch("http://localhost:4000/login", {
+    fetch("http://localhost:4000/api/login", {
       method: "POST",
       body: JSON.stringify(requestedBody)
     })
@@ -56,9 +56,7 @@ class UnconnectedLogin extends Component {
   render() {
     console.log("store: ", this.props.sessionData)
     if (this.props.sessionData) {
-      return (
-        <Redirect to="/adminPage" />
-      )
+      return <Redirect to="/adminPage" />
     } else
       return (
         <div className="login">
