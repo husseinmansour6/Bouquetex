@@ -39,7 +39,7 @@ class UnconnectedAddBaradi extends Component {
       // The description will be in the req.body of the backend
       formData.append("costPerMeter", this.state.costPerMeter)
 
-      fetch("http://localhost:4000/addBaradi", {
+      fetch("http://localhost:4000/api/addBaradi", {
         body: formData,
         method: "POST"
       })

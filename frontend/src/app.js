@@ -166,7 +166,7 @@ class App extends Component {
                     href="https://www.facebook.com/bouquetex.bouquetex"
                     target="_black"
                   >
-                    <img src="/images/fb.png" className="fb" />
+                    <img src="/imgs/fb.png" className="fb" />
                   </a>
                   Bouquetex
                 </h4>

@@ -20,7 +20,7 @@ class UnconnectecViewData extends Component {
     console.log("id: ", this.props.match.params.id)
     let arrImages = []
     let idToGet = this.props.match.params.id
-    fetch("http://localhost:4000/getImagesGallery", {
+    fetch("http://localhost:4000/api/getImagesGallery", {
       method: "POST",
       body: JSON.stringify(idToGet)
     })

@@ -35,7 +35,7 @@ class UnconnectedAddCloth extends Component {
     formData.append("typeOfCloth", this.state.typeOfColth)
     formData.append("costPerMeter", this.state.costPerMeter)
 
-    fetch("http://localhost:4000/addCloth", {
+    fetch("http://localhost:4000/api/addCloth", {
       body: formData,
       method: "POST"
     })

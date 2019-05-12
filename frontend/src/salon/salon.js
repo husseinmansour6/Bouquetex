@@ -9,7 +9,7 @@ class UnconnectedSalon extends Component {
   }
   deleteSalon(id) {
     console.log("id: ", id)
-    fetch("http://localhost:4000/delSalon", {
+    fetch("http://localhost:4000/api/delSalon", {
       method: "POST",
       body: JSON.stringify(id)
     })
@@ -24,7 +24,7 @@ class UnconnectedSalon extends Component {
       return (
         <img
           className="text"
-          src="/images/del.png"
+          src="/imgs/del.png"
           onClick={() => {
             this.deleteSalon({ id: this.props.salonId })
           }}

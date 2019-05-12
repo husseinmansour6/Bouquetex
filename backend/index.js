@@ -30,7 +30,7 @@ var upload = multer({ dest: __dirname + "/images/" })
 // app.use(express.static(__dirname + "/images"))
 console.log("dir name: ", __dirname)
 
-app.post("/addCloth", upload.single("product-image"), (req, res) => {
+app.post("/api/addCloth", upload.single("product-image"), (req, res) => {
   console.log("********************* Add Image  *****************")
   console.log(req.file)
   console.log("new file location", req.file.path)
@@ -50,7 +50,7 @@ app.post("/addCloth", upload.single("product-image"), (req, res) => {
   console.log("updated itemData:", itemData)
   res.send(JSON.stringify(itemToStore))
 })
-app.post("/addBaradi", upload.single("product-image"), (req, res) => {
+app.post("/api/addBaradi", upload.single("product-image"), (req, res) => {
   console.log("********************* Add baradi  *****************")
   console.log(req.file)
   console.log("new file location", req.file.path)
@@ -69,7 +69,7 @@ app.post("/addBaradi", upload.single("product-image"), (req, res) => {
   console.log("updated itemData:", itemData)
   res.send(JSON.stringify(itemToStore))
 })
-app.post("/addSalon", upload.single("product-image"), (req, res) => {
+app.post("/api/addSalon", upload.single("product-image"), (req, res) => {
   console.log("********************* Add salon  *****************")
   console.log(req.file)
   console.log("new file location", req.file.path)
@@ -89,7 +89,7 @@ app.post("/addSalon", upload.single("product-image"), (req, res) => {
   res.send(JSON.stringify(itemToStore))
 })
 
-app.post("/addImages", upload.array("imgs[]", 5), (req, res) => {
+app.post("/api/addImages", upload.array("imgs[]", 5), (req, res) => {
   console.log("********************* Add Images *****************")
   console.log(req.files)
   console.log("new file location", req.files.path)
@@ -121,7 +121,7 @@ app.post("/addImages", upload.array("imgs[]", 5), (req, res) => {
   // res.send(JSON.stringify(itemToStore.paths))
 })
 
-app.get("/getCloths", (req, res) => {
+app.get("/api/getCloths", (req, res) => {
   dbs
     .collection("cloth")
     .find()
@@ -131,7 +131,7 @@ app.get("/getCloths", (req, res) => {
       res.send(JSON.stringify({ success: true, cloths: result }))
     })
 })
-app.get("/getSalons", (req, res) => {
+app.get("/api/getSalons", (req, res) => {
   dbs
     .collection("salon")
     .find()
@@ -141,7 +141,7 @@ app.get("/getSalons", (req, res) => {
       res.send(JSON.stringify({ success: true, salons: result }))
     })
 })
-app.get("/getBaradi", (req, res) => {
+app.get("/api/getBaradi", (req, res) => {
   dbs
     .collection("baradi")
     .find()
@@ -154,7 +154,7 @@ app.get("/getBaradi", (req, res) => {
 
 app.use(bodyParser.raw({ type: "*/*" }))
 
-app.post("/delGallery", (req, res) => {
+app.post("/api/delGallery", (req, res) => {
   console.log(
     "************************* Delete Gallery *************************"
   )
@@ -163,7 +163,7 @@ app.post("/delGallery", (req, res) => {
   console.log("id: ", gid)
   dbs.collection("images").deleteOne({ _id: ObjectID(gid) })
 })
-app.post("/delCloth", (req, res) => {
+app.post("/api/delCloth", (req, res) => {
   console.log(
     "************************* Delete Cloth *************************"
   )
@@ -173,7 +173,7 @@ app.post("/delCloth", (req, res) => {
   dbs.collection("cloth").deleteOne({ _id: ObjectID(cid) })
   res.send(JSON.stringify({ success: true }))
 })
-app.post("/delSalon", (req, res) => {
+app.post("/api/delSalon", (req, res) => {
   console.log(
     "************************* Delete Salon *************************"
   )
@@ -183,7 +183,7 @@ app.post("/delSalon", (req, res) => {
   dbs.collection("salon").deleteOne({ _id: ObjectID(sid) })
   res.send(JSON.stringify({ success: true }))
 })
-app.post("/delBaradi", (req, res) => {
+app.post("/api/delBaradi", (req, res) => {
   console.log(
     "************************* Delete baradi *************************"
   )
@@ -233,7 +233,7 @@ app.post("/api/login", (req, res) => {
   //res.send(JSON.stringify("login"))
 })
 
-app.post("/updateData", (req, res) => {
+app.post("/api/updateData", (req, res) => {
   console.log("************************ update data *****************")
   var reqBody = JSON.parse(req.body)
   console.log("req body: ", reqBody)
@@ -260,7 +260,7 @@ app.post("/updateData", (req, res) => {
     })
 })
 
-app.post("/delAddedImage", (req, res) => {
+app.post("/api/delAddedImage", (req, res) => {
   console.log("************************ delete added image *****************")
   console.log("path: ", JSON.parse(req.body))
   var pathToDel = JSON.parse(req.body)
@@ -288,7 +288,7 @@ app.post("/delAddedImage", (req, res) => {
       // res.send(JSON.stringify(result))
     })
 })
-app.get("/getImages", (req, res) => {
+app.get("/api/getImages", (req, res) => {
   console.log("************************ get images *****************")
   dbs
     .collection("images")
@@ -298,7 +298,7 @@ app.get("/getImages", (req, res) => {
       res.send(JSON.stringify(result))
     })
 })
-app.post("/getImagesGallery", (req, res) => {
+app.post("/api/getImagesGallery", (req, res) => {
   console.log("************************ get images Gallery*****************")
   var reqBody = JSON.parse(req.body)
   console.log("reqbody: ", reqBody)
@@ -320,6 +320,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"))
 })
 
-app.listen(4000, function() {
+app.listen(4000, function() {//change it to 80
   console.log("Server started on port 4000")
 })
