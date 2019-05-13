@@ -22,7 +22,7 @@ class Profile extends Component {
     let oldPass = this.state.oldPass
     let newPass = this.state.newPass
     let bodyToSend = { oldPassword: oldPass, newPassword: newPass }
-    fetch("http://localhost:4000/api/updateData", {
+    fetch("http://localhost:80/api/updateData", {
       method: "POST",
       body: JSON.stringify(bodyToSend)
     })

@@ -20,7 +20,7 @@ class UnconnectecViewData extends Component {
     console.log("id: ", this.props.match.params.id)
     let arrImages = []
     let idToGet = this.props.match.params.id
-    fetch("http://localhost:4000/api/getImagesGallery", {
+    fetch("http://localhost:80/api/getImagesGallery", {
       method: "POST",
       body: JSON.stringify(idToGet)
     })
@@ -56,7 +56,7 @@ class UnconnectecViewData extends Component {
     let url =
       "http://" +
       window.location.hostname +
-      ":4000/images/" +
+      ":80/images/" +
       this.props.match.params.id
     let title = "View Gallery"
     console.log("url: ", url)
@@ -74,17 +74,17 @@ class UnconnectecViewData extends Component {
       console.log("state: ", this.state.images)
       let img = document.getElementById("previewImg")
       img.src =
-        "http://" + window.location.hostname + ":4000" + this.state.images[0]
+        "http://" + window.location.hostname + ":80" + this.state.images[0]
 
       return this.state.images.map((path, index) => {
         console.log(
           "path in render images: ",
-          "http://" + window.location.hostname + ":4000" + path
+          "http://" + window.location.hostname + ":80" + path
         )
         return (
           <img
             className="thumb"
-            src={"http://" + window.location.hostname + ":4000" + path}
+            src={"http://" + window.location.hostname + ":80" + path}
             key={index}
             onClick={this.previewImg}
           />

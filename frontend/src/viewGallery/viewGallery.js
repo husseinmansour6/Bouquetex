@@ -21,7 +21,7 @@ class ViewGallery extends Component {
     console.log("length of paths: ", length)
     let rand = Math.floor(Math.random() * length)
     let path =
-      "http://" + window.location.hostname + ":4000" + this.props.paths[rand]
+      "http://" + window.location.hostname + ":80" + this.props.paths[rand]
 
     console.log("path: ", path)
     return (

@@ -9,7 +9,7 @@ class UnconnectedSalon extends Component {
   }
   deleteSalon(id) {
     console.log("id: ", id)
-    fetch("http://localhost:4000/api/delSalon", {
+    fetch("http://localhost:80/api/delSalon", {
       method: "POST",
       body: JSON.stringify(id)
     })
@@ -36,7 +36,7 @@ class UnconnectedSalon extends Component {
     return (
       <div className="card bg-dark text-white">
         <img
-          src={"http://" + window.location.hostname + ":4000" + this.props.path}
+          src={"http://" + window.location.hostname + ":80" + this.props.path}
           className="card-img"
         />
         <div className="card-img-overlay">

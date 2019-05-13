@@ -35,7 +35,7 @@ class UnconnectedAddCloth extends Component {
     formData.append("typeOfCloth", this.state.typeOfColth)
     formData.append("costPerMeter", this.state.costPerMeter)
 
-    fetch("http://localhost:4000/api/addCloth", {
+    fetch("http://localhost:80/api/addCloth", {
       body: formData,
       method: "POST"
     })
@@ -105,7 +105,7 @@ class UnconnectedAddCloth extends Component {
           console.log("item data", item)
           // window.location.hostname is the domain (or IP) from where the webpage was downloaded
           let imagePath =
-            "http://" + window.location.hostname + ":4000" + item.path
+            "http://" + window.location.hostname + ":80" + item.path
           console.log("image path", imagePath)
           return (
             <div>

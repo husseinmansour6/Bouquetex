@@ -15,7 +15,7 @@ class UnconnectedGallery extends Component {
     // console.log("length: ", this.props.images)
     if (this.props.images === [] || this.props.images === undefined) {
       // console.log("empty")
-      fetch("http://localhost:4000/api/getImages")
+      fetch("http://localhost:80/api/getImages")
         .then(response => {
           return response.text()
         })
@@ -76,7 +76,7 @@ class UnconnectedGallery extends Component {
                         src={
                           "http://" +
                           window.location.hostname +
-                          ":4000" +
+                          ":80" +
                           item.path
                         }
                         style={{ height: rand + "px" }}

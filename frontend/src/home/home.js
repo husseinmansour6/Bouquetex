@@ -16,7 +16,7 @@ class UnconnectedHome extends Component {
     // console.log("length: ", this.props.images)
     if (this.props.images === undefined) {
       console.log("empty")
-      fetch("http://localhost:4000/api/getImages")
+      fetch("http://localhost:80/api/getImages")
         .then(response => {
           return response.text()
         })
@@ -56,7 +56,7 @@ class UnconnectedHome extends Component {
             className=""
             key={rand}
             src={
-              "http://" + window.location.hostname + ":4000" + allImages[rand]
+              "http://" + window.location.hostname + ":80" + allImages[rand]
             }
           />
         )

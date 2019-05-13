@@ -30,7 +30,7 @@ class UnconnectedAddSalon extends Component {
     // The description will be in the req.body of the backend
     formData.append("costPerMeter", this.state.costPerMeter)
 
-    fetch("http://localhost:4000/api/addSalon", {
+    fetch("http://localhost:80/api/addSalon", {
       body: formData,
       method: "POST"
     })

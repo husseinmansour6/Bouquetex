@@ -13,7 +13,7 @@ class UnconnectedOne extends Component {
   componentDidMount() {
     console.log(this.props.clothsList)
     if (this.props.clothsList === undefined) {
-      fetch("http://localhost:4000/api/getCloths")
+      fetch("http://localhost:80/api/getCloths")
         .then(response => {
           return response.text()
         })

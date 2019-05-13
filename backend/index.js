@@ -320,6 +320,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"))
 })
 
-app.listen(4000, function() {//change it to 80
-  console.log("Server started on port 4000")
+app.listen(80, function() {
+  //change it to 80
+  console.log("Server started on port 80")
 })

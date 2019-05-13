@@ -30,7 +30,7 @@ class UnconnectedLogin extends Component {
     )
     console.log(this.state)
     let requestedBody = this.state
-    fetch("http://localhost:4000/api/login", {
+    fetch("http://localhost:80/api/login", {
       method: "POST",
       body: JSON.stringify(requestedBody)
     })

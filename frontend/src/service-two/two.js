@@ -13,7 +13,7 @@ class UnconnectedTwo extends Component {
   componentDidMount() {
     console.log(this.props.salonsList)
     if (this.props.salonsList === undefined && this.state.salons.length === 0) {
-      fetch("http://localhost:4000/api/getSalons")
+      fetch("http://localhost:80/api/getSalons")
         .then(response => {
           return response.text()
         })
