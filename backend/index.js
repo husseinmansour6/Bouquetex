@@ -311,7 +311,9 @@ app.post("/api/getImagesGallery", (req, res) => {
       res.send(JSON.stringify(result))
     })
 })
+
 app.use(express.static("../frontend/build"))
+app.use(express.static(__dirname + "../frontend/public"))
 app.use(express.static(__dirname + "/images"))
 
 const path = require("path")
@@ -319,8 +321,6 @@ app.get("*", (req, res) => {
   // res.sendFile(path.join(__dirname, "../frontend/build/index.html"))
   res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"))
 })
-
-
 
 app.listen(80, function() {
   //change it to 80
