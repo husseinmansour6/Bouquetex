@@ -8,7 +8,9 @@ import { connect } from "react-redux"
 class UnconnectedHome extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      staticImages: []
+    }
     this.renderImages = this.renderImages.bind(this)
   }
   componentDidMount() {
@@ -31,6 +33,20 @@ class UnconnectedHome extends Component {
     } else {
       console.log("not empty")
     }
+
+    fetch("http://localhost:80/api/getStaticImages")
+      .then(response => {
+        return response.text()
+      })
+      .then(response => {
+        let parsedResponse = JSON.parse(response)
+        console.log("parsed static images: ", parsedResponse)
+        this.setState({ staticImages: parsedResponse.paths })
+        // this.props.dispatch({
+        //   type: "all-images",
+        //   actionData: parsedResponse
+        // })
+      })
   }
   renderImages() {
     console.log(this.props.images)
@@ -75,9 +91,12 @@ class UnconnectedHome extends Component {
                 <img
                   className="s-info-img"
                   src={
-                    "http://" + window.location.hostname + ":80/imgs/cloth.jpg"
+                    "http://" +
+                    window.location.hostname +
+                    ":80" +
+                    this.state.staticImages[1]
                   }
-                  //  src="/imgs/cloth.jpg"
+                  // src=""
                 />
               </Link>
             </div>
@@ -87,9 +106,11 @@ class UnconnectedHome extends Component {
                 <img
                   className="s-info-img"
                   src={
-                    "http://" + window.location.hostname + ":80/imgs/salon.jpg"
+                    "http://" +
+                    window.location.hostname +
+                    ":80" +
+                    this.state.staticImages[2]
                   }
-                  // src="/imgs/salon.jpg"
                 />
               </Link>
             </div>
@@ -99,9 +120,11 @@ class UnconnectedHome extends Component {
                 <img
                   className="s-info-img"
                   src={
-                    "http://" + window.location.hostname + ":80/imgs/baradi.jpg"
+                    "http://" +
+                    window.location.hostname +
+                    ":80" +
+                    this.state.staticImages[0]
                   }
-                  // src="/imgs/baradi.jpg"
                 />
               </Link>
             </div>
