@@ -15,7 +15,7 @@ class UnconnectedGallery extends Component {
     // console.log("length: ", this.props.images)
     if (this.props.images === [] || this.props.images === undefined) {
       // console.log("empty")
-      fetch("http://localhost:80/api/getImages")
+      fetch("http://" + window.location.hostname + ":80/api/getImages")
         .then(response => {
           return response.text()
         })
