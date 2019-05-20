@@ -16,7 +16,7 @@ class UnconnectedHome extends Component {
     console.log("length: ", this.props.images)
     if (this.props.images === [] || this.props.images === undefined) {
       console.log("empty")
-      fetch("http://localhost:80/api/getImages")
+      fetch("http://" + window.location.hostname + ":80/api/getImages")
         .then(response => {
           return response.text()
         })
@@ -96,9 +96,6 @@ class UnconnectedHome extends Component {
 
 let Home = connect(st => {
   console.log("state in connect: ", st)
-  if (st === undefined) {
-    console.log(" in if state")
-    componentDidMount()
-  } else return { images: st.images }
+  return { images: st.images }
 })(UnconnectedHome)
 export default Home
