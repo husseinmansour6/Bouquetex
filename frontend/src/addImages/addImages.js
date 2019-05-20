@@ -79,8 +79,6 @@ class UnconnectedAddImages extends Component {
     }
   }
 
-  
-
   render() {
     // console.log("id: ", this.props.match.params)
     console.log("props in add images: ", this.props)
@@ -134,7 +132,11 @@ class UnconnectedAddImages extends Component {
                     <img
                       id="top"
                       className="text"
-                      src="/imgs/del.png"
+                      src={
+                        "http://" +
+                        window.location.hostname +
+                        ":80/imgs/del.png"
+                      }
                       onClick={() => {
                         this.handelDeleteImage({ path: item })
                       }}

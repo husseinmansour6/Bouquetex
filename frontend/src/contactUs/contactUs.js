@@ -17,7 +17,11 @@ class ContactUs extends Component {
                 <h4>
                   <img
                     className="contact-us-icons"
-                    src="/imgs/map-marker.png"
+                    src={
+                      "http://" +
+                      window.location.hostname +
+                      ":80/imgs/map-marker.png"
+                    }
                   />
                   3668 Rue Fleury E, Montréal-Nord, QC H1H 2S7
                 </h4>
@@ -25,12 +29,22 @@ class ContactUs extends Component {
             </div>
             <div className="space">
               <h4>
-                <img className="contact-us-icons" src="/imgs/phone.png" />
+                <img
+                  className="contact-us-icons"
+                  src={
+                    "http://" + window.location.hostname + ":80/imgs/phone.png"
+                  }
+                />
                 (514) 298-3346 / (514) 243-6415
               </h4>
 
               <h4>
-                <img src="/imgs/clock.svg" className="contact-us-icons" />
+                <img
+                  src={
+                    "http://" + window.location.hostname + ":80/imgs/clock.png"
+                  }
+                  className="contact-us-icons"
+                />
                 Opening Hour:
               </h4>
               <div>

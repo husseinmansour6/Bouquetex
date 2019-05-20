@@ -25,7 +25,9 @@ class UnconnectedCloth extends Component {
       return (
         <img
           className="text"
-          src="/imgs/del.png"
+          src={
+            "http://" + window.location.hostname + ":80/imgs/del.png"
+          }
           onClick={() => {
             this.deleteCloth({ id: this.props.clothId })
           }}

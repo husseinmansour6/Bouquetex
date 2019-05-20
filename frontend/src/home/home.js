@@ -62,6 +62,7 @@ class UnconnectedHome extends Component {
     }
   }
   render() {
+    // console.log("w h n: ", "http://" + window.location.hostname)
     return (
       <div>
         <div className="images-transition">
@@ -72,19 +73,29 @@ class UnconnectedHome extends Component {
             <div className="test">
               <Link to="/service-one">
                 <span className="alt-text">Cloth</span>
-                <img className="s-info-img" src="/imgs/cloth.jpg" />
+                <img
+                  className="s-info-img"
+                  src={
+                    "http://" + window.location.hostname + ":80/imgs/cloth.jpg"
+                  }
+                />
               </Link>
             </div>
             <div className="test">
               <Link to="/service-two">
                 <span className="alt-text">Salon</span>
-                <img className="s-info-img" src="/imgs/salon.jpg" />
+                <img className="s-info-img" src={
+                    "http://" + window.location.hostname + ":80/imgs/salon.jpg"
+                  }
+                />
               </Link>
             </div>
             <div className="test">
               <Link to="service-three">
                 <span className="alt-text">Baradi</span>
-                <img className="s-info-img" src="/imgs/baradi.jpg" />
+                <img className="s-info-img" src={
+                    "http://" + window.location.hostname + ":80/imgs/baradi.jpg"
+                  } />
               </Link>
             </div>
           </div>

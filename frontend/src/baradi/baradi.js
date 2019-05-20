@@ -24,7 +24,9 @@ class UnconnectedBaradi extends Component {
       return (
         <img
           className="text"
-          src="/imgs/del.png"
+          src={
+            "http://" + window.location.hostname + ":80/imgs/del.png"
+          }
           onClick={() => {
             this.deleteBaradi({ id: this.props.baradiId })
           }}
