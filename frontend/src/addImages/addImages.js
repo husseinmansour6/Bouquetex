@@ -22,7 +22,7 @@ class UnconnectedAddImages extends Component {
 
   handelDeleteImage(e) {
     console.log("path in delete: ", e)
-    fetch("http://localhost:80/api/delAddedImage", {
+    fetch("http://" + window.location.hostname + ":80/api/delAddedImage", {
       method: "POST",
       body: JSON.stringify(e.path)
     })
@@ -51,7 +51,7 @@ class UnconnectedAddImages extends Component {
       // console.log("iiiiiiiii: ", this.props.match.params)
       // formData.append("apartmentId", this.props.match.params.id)
 
-      fetch("http://localhost:80/api/addImages", {
+      fetch("http://" + window.location.hostname + ":80/api/addImages", {
         body: formData,
         method: "POST"
       })

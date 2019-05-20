@@ -10,7 +10,7 @@ class UnconnectedCloth extends Component {
   }
   deleteCloth(id) {
     console.log("id: ", id)
-    fetch("http://localhost:80/api/delCloth", {
+    fetch("http://" + window.location.hostname + ":80/api/delCloth", {
       method: "POST",
       body: JSON.stringify(id)
     })

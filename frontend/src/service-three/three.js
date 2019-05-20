@@ -13,7 +13,7 @@ class UnconnectedThree extends Component {
   componentDidMount() {
     console.log(this.props.baradiList)
     if (this.props.baradiList === undefined && this.state.baradi.length === 0) {
-      fetch("http://localhost:80/api/getBaradi")
+      fetch("http://" + window.location.hostname + ":80/api/getBaradi")
         .then(response => {
           return response.text()
         })

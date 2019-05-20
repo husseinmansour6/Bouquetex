@@ -9,7 +9,7 @@ class UnconnectedBaradi extends Component {
   }
   deleteBaradi(id) {
     console.log("id: ", id)
-    fetch("http://localhost:80/api/delBaradi", {
+    fetch("http://" + window.location.hostname + ":80/api/delBaradi", {
       method: "POST",
       body: JSON.stringify(id)
     })

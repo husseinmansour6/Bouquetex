@@ -9,7 +9,7 @@ class UnconnectedSalon extends Component {
   }
   deleteSalon(id) {
     console.log("id: ", id)
-    fetch("http://localhost:80/api/delSalon", {
+    fetch("http://" + window.location.hostname + ":80/api/delSalon", {
       method: "POST",
       body: JSON.stringify(id)
     })

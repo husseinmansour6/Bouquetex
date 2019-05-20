@@ -13,7 +13,7 @@ class UnconnectedGalleries extends Component {
     console.log("im in component did mount", this.props.images)
 
     // console.log("empty")
-    fetch("http://localhost:80/api/getImages")
+    fetch("http://" + window.location.hostname + ":80/api/getImages")
       .then(response => {
         return response.text()
       })
@@ -29,7 +29,7 @@ class UnconnectedGalleries extends Component {
   deleteGallery(id) {
     console.log("gid: ", id)
 
-    fetch("http://localhost:80/api/delGallery", {
+    fetch("http://" + window.location.hostname + ":80/api/delGallery", {
       method: "POST",
       body: JSON.stringify(id)
     })
