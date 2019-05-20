@@ -96,7 +96,9 @@ class UnconnectedHome extends Component {
 
 let Home = connect(st => {
   console.log("state in connect: ", st)
-  if (st === undefined) componentDidMount()
-  else return { images: st.images }
+  if (st === undefined) {
+    console.log(" in if state")
+    componentDidMount()
+  } else return { images: st.images }
 })(UnconnectedHome)
 export default Home
