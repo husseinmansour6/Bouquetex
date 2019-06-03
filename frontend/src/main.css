@@ -84,6 +84,16 @@
     width: 100%;
     height: 162;
   }
+  .flex-footer {
+    font-family: "Roboto Slab", serif;
+    text-align: center;
+  }
+  h4 {
+    font-size: 17px;
+  }
+  .spacing {
+    padding: 5px;
+  }
   .fb {
     margin-top: -5px;
     width: 40px;
@@ -120,6 +130,7 @@
     width: 100%;
     margin: 0 auto;
   }
+
   #cf img {
     height: 300px;
     width: 100%;

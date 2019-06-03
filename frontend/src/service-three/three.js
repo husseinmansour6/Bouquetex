@@ -46,13 +46,8 @@ class UnconnectedThree extends Component {
   render() {
     return (
       <div
-        style={{
-          display: "flex",
-          textAlign: "-webkit - center",
-          position: "relative",
-          flexWrap: "wrap",
-          top: 162
-        }}
+      className="service-content-page"
+       
       >
         {this.renderBaradi()}
       </div>

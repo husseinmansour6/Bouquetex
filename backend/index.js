@@ -313,7 +313,7 @@ app.post("/api/getImagesGallery", (req, res) => {
 })
 
 app.use(express.static("../frontend/build"))
-app.use(express.static(__dirname + "../frontend/public"))
+// app.use(express.static(__dirname + "../frontend/public"))
 app.use(express.static(__dirname + "/images"))
 
 const path = require("path")

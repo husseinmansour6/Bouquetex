@@ -60,9 +60,23 @@ class UnconnectecViewData extends Component {
       this.props.match.params.id
     let title = "View Gallery"
     console.log("url: ", url)
+
     if (this.props.stateSid) {
       return (
-        <FacebookShareButton url={url} quote={title}>
+        <FacebookShareButton
+          url={url}
+          quote={title}
+          children={
+            <img
+              src={
+                "http://" +
+                window.location.hostname +
+                ":80" +
+                this.state.images[0]
+              }
+            />
+          }
+        >
           <FacebookIcon size={40} round />
         </FacebookShareButton>
       )

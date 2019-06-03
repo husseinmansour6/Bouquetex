@@ -13,7 +13,11 @@ class ContactUs extends Component {
           </div>
           <div className="right">
             <div className="space">
-              <a href="https://bit.ly/2Hpgtej" target="_blank">
+              <a
+                href="https://bit.ly/2Hpgtej"
+                target="_blank"
+                style={{ textDecoration: "underline" }}
+              >
                 <h4>
                   <img
                     className="contact-us-icons"

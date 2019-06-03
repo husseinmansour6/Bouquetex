@@ -44,19 +44,7 @@ class UnconnectedTwo extends Component {
     }
   }
   render() {
-    return (
-      <div
-        style={{
-          display: "flex",
-          textAlign: "-webkit - center",
-          position: "relative",
-          flexWrap: "wrap",
-          top: 162
-        }}
-      >
-        {this.renderSalons()}
-      </div>
-    )
+    return <div className="service-content-page">{this.renderSalons()}</div>
   }
 }
 
