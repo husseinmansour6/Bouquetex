@@ -21,7 +21,7 @@ class UnconnectedBaradi extends Component {
   }
   generateDeleteBtn() {
     if (this.props.SID) {
-      // console.log("this props: ", this.props)
+      console.log("this props: ", this.props)
       return (
         <img
           className="text"
