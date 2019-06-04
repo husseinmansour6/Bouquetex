@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import del from "../../public/imgs/del.png"
 
 class UnconnectedBaradi extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class UnconnectedBaradi extends Component {
         <img
           className="text"
           src={
-            "http://" + window.location.hostname + ":80/imgs/del.png"
+            del
           }
           onClick={() => {
             this.deleteBaradi({ id: this.props.baradiId })

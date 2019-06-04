@@ -66,16 +66,7 @@ class UnconnectecViewData extends Component {
         <FacebookShareButton
           url={url}
           quote={title}
-          children={
-            <img
-              src={
-                "http://" +
-                window.location.hostname +
-                ":80" +
-                this.state.images[0]
-              }
-            />
-          }
+          
         >
           <FacebookIcon size={40} round />
         </FacebookShareButton>

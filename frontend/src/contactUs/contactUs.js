@@ -2,6 +2,9 @@ import ReactDOM from "react-dom"
 import React, { Component } from "react"
 // import MapContainer from "./map"
 import "./contactUs.css"
+import phone from "../../public/imgs/phone.png"
+import mapMarker from "../../public/imgs/map-marker.png"
+import clock from "../../public/imgs/clock.png"
 
 class ContactUs extends Component {
   render() {
@@ -19,36 +22,19 @@ class ContactUs extends Component {
                 style={{ textDecoration: "underline" }}
               >
                 <h4>
-                  <img
-                    className="contact-us-icons"
-                    src={
-                      "http://" +
-                      window.location.hostname +
-                      ":80/imgs/map-marker.png"
-                    }
-                  />
+                  <img className="contact-us-icons" src={mapMarker} />
                   3668 Rue Fleury E, Montréal-Nord, QC H1H 2S7
                 </h4>
               </a>
             </div>
             <div className="space">
               <h4>
-                <img
-                  className="contact-us-icons"
-                  src={
-                    "http://" + window.location.hostname + ":80/imgs/phone.png"
-                  }
-                />
+                <img className="contact-us-icons" src={phone} />
                 (514) 298-3346 / (514) 243-6415
               </h4>
 
               <h4>
-                <img
-                  src={
-                    "http://" + window.location.hostname + ":80/imgs/clock.png"
-                  }
-                  className="contact-us-icons"
-                />
+                <img src={clock} className="contact-us-icons" />
                 Opening Hour:
               </h4>
               <div>

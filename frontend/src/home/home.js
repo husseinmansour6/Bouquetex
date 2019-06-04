@@ -4,6 +4,9 @@ import "./home.css"
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
+import baradi from "../../public/imgs/baradi.jpg"
+import salon from "../../public/imgs/salon.jpg"
+import cloth from "../../public/imgs/cloth.jpg"
 
 class UnconnectedHome extends Component {
   constructor(props) {
@@ -63,6 +66,7 @@ class UnconnectedHome extends Component {
   }
   render() {
     // console.log("w h n: ", "http://" + window.location.hostname)
+    console.log("baradi src: ", baradi)
     return (
       <div>
         <div className="images-transition">
@@ -75,32 +79,20 @@ class UnconnectedHome extends Component {
                 <img
                   className="s-info-img"
                   // src={window.location.hostname + "imgs/cloth.jpg/.jpg"}
-                  src={
-                    "http://" + window.location.hostname + ":80/imgs/cloth.jpg"
-                  }
+                  src={cloth}
                 />
                 <span className="alt-text">Cloth</span>
               </Link>
             </div>
             <div className="test">
               <Link to="/service-two">
-                <img
-                  className="s-info-img"
-                  src={
-                    "http://" + window.location.hostname + ":80/imgs/salon.jpg"
-                  }
-                />
+                <img className="s-info-img" src={salon} />
                 <span className="alt-text">Salon</span>
               </Link>
             </div>
             <div className="test">
               <Link to="service-three">
-                <img
-                  className="s-info-img"
-                  src={
-                    "http://" + window.location.hostname + ":80/imgs/baradi.jpg"
-                  }
-                />
+                <img className="s-info-img" src={baradi} />
                 <span className="alt-text">Baradi</span>
               </Link>
             </div>

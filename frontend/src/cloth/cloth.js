@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "./cloth.css"
 import { connect } from "react-redux"
+import del from "../../public/imgs/del.png"
 
 class UnconnectedCloth extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class UnconnectedCloth extends Component {
         <img
           className="text"
           src={
-            "http://" + window.location.hostname + ":80/imgs/del.png"
+            del
           }
           onClick={() => {
             this.deleteCloth({ id: this.props.clothId })

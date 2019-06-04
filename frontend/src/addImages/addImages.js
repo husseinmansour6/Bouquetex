@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import "./addImages.css"
 import { connect } from "react-redux"
 import { Redirect } from "react-router-dom"
+import del from "../../public/imgs/del.png"
 
 class UnconnectedAddImages extends Component {
   constructor(props) {
@@ -133,9 +134,7 @@ class UnconnectedAddImages extends Component {
                       id="top"
                       className="text"
                       src={
-                        "http://" +
-                        window.location.hostname +
-                        ":80/imgs/del.png"
+                        del
                       }
                       onClick={() => {
                         this.handelDeleteImage({ path: item })

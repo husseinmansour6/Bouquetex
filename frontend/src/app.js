@@ -18,6 +18,7 @@ import Gallery from "./gallery/gallery"
 import ViewData from "./viewGalleryData/viewData"
 import addImages from "./addImages/addImages"
 import AdminPage from "./admin/adminPage"
+import fb from "../public/imgs/fb.png"
 
 function reducer(state, action) {
   switch (action.type) {
@@ -166,12 +167,7 @@ class App extends Component {
                     href="https://www.facebook.com/bouquetex.bouquetex"
                     target="_black"
                   >
-                    <img
-                      src={
-                        "http://" + window.location.hostname + ":80/imgs/fb.png"
-                      }
-                      className="fb"
-                    />
+                    <img src={fb} className="fb" />
                   </a>
                   Bouquetex
                 </h4>
