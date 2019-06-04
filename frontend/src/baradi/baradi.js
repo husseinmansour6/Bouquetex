@@ -25,9 +25,7 @@ class UnconnectedBaradi extends Component {
       return (
         <img
           className="text"
-          src={
-            del
-          }
+          src={del}
           onClick={() => {
             this.deleteBaradi({ id: this.props.baradiId })
           }}
