@@ -9,7 +9,6 @@ class UnconnectedSalon extends Component {
     this.deleteSalon = this.deleteSalon.bind(this)
   }
   deleteSalon(id) {
-    console.log("id: ", id)
     fetch("http://" + window.location.hostname + ":80/api/delSalon", {
       method: "POST",
       body: JSON.stringify(id)
@@ -21,7 +20,6 @@ class UnconnectedSalon extends Component {
   }
   generateDeleteBtn() {
     if (this.props.SID) {
-      // console.log("this props: ", this.props)
       return (
         <img
           className="text"

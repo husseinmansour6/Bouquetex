@@ -23,98 +23,78 @@ import fb from "../public/imgs/fb.png"
 function reducer(state, action) {
   switch (action.type) {
     case "set-sessionId":
-      console.log("action: ", action)
       return {
         ...state,
         stateSid: action.actionData.sessionId
       }
     case "new-images":
-      console.log("action: ", action)
       return {
         ...state,
         images: state.images.concat(action.actionData)
       }
     case "add-cloth":
-      console.log("action: ", action)
       return {
         ...state,
         cloths: state.cloths.concat(action.actionData)
       }
     case "add-salon":
-      console.log("action: ", action)
       return {
         ...state,
         salons: state.salons.concat(action.actionData)
       }
     case "add-baradi":
-      console.log("action: ", action)
       return {
         ...state,
         baradi: state.baradi.concat(action.actionData)
       }
     case "all-images":
-      console.log("action: ", action)
       return {
         ...state,
         images: action.actionData
       }
     case "get-cloths":
-      console.log("action: ", action)
       return {
         ...state,
         cloths: action.actionData
       }
     case "get-baradi":
-      console.log("action: ", action)
       return {
         ...state,
         baradi: action.actionData
       }
     case "get-salons":
-      console.log("action: ", action)
       return {
         ...state,
         salons: action.actionData
       }
     case "del-cloth":
-      console.log("action: ", action)
       let newClothsList = state.cloths.filter(cloth => {
         return cloth._id !== action.actionData.id
       })
-      console.log("new cloths: ", newClothsList)
       return {
         ...state,
         cloths: newClothsList
       }
     case "del-salon":
-      console.log("action: ", action)
       let newSalonsList = state.salons.filter(salon => {
         return salon._id !== action.actionData.id
       })
-      console.log("new salons: ", newSalonsList)
       return {
         ...state,
         salons: newSalonsList
       }
     case "del-baradi":
-      console.log("action: ", action)
       let newBaradiList = state.baradi.filter(baradi => {
         return baradi._id !== action.actionData.id
       })
-      console.log("new salons: ", newBaradiList)
       return {
         ...state,
         baradi: newBaradiList
       }
     case "del-gallery":
-      console.log("action in del gallery: ", action)
-      console.log("images: ", state.images)
       let newImagesList = state.images.filter(img => {
-        console.log("img data: ", img._id, "   ", action.actionData.id)
-        // if (img._id === action.id) console.log("true")
         return img._id !== action.actionData.id
       })
-      console.log("new Images List: ", newImagesList)
 
       return {
         ...state,
@@ -140,7 +120,7 @@ class App extends Component {
     return (
       <Provider store={myStore}>
         <BrowserRouter>
-          <div>
+          <React.Fragment>
             <div className="header">
               <div className="logo-text">Bouquetex</div>
               <div className="desc-text">Salon Marocain</div>
@@ -179,7 +159,7 @@ class App extends Component {
                 </h4>
               </div>
             </div>
-          </div>
+          </React.Fragment>
         </BrowserRouter>
       </Provider>
     )

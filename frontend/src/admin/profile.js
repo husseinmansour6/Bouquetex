@@ -31,7 +31,6 @@ class Profile extends Component {
       })
       .then(responseBody => {
         let parsed = JSON.parse(responseBody)
-        console.log("parsed in responce: ", parsed)
         if (parsed.success) {
           alert("Password changed successfully!")
           this.setState({ oldPass: "", newPass: "" })

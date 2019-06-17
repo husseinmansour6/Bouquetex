@@ -13,7 +13,6 @@ class UnconnectedAdminPage extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }
   handleLogout(event) {
-    console.log("sid: ", this.props.sessionId)
     event.preventDefault()
     this.props.dispatch({
       type: "set-sessionId",
@@ -25,12 +24,7 @@ class UnconnectedAdminPage extends Component {
   render() {
     if (this.props.sid) {
       return (
-        <div style={{ position: "relative", top: 162 }}>
-          <span>
-            <button className="btn btn-dark" onClick={this.handleLogout}>
-              log out
-            </button>
-          </span>
+        <div className="admin-content">
           <ul className="nav nav-tabs">
             <li className="nav-item">
               <a className="nav-link active" data-toggle="tab" href="#profile">
@@ -63,6 +57,15 @@ class UnconnectedAdminPage extends Component {
                 Add Baradi
               </a>
             </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                data-toggle="tab"
+                onClick={this.handleLogout}
+              >
+                Log Out
+              </a>
+            </li>
           </ul>
           <div id="myTabContent" className="tab-content">
             <div className="tab-pane fade active show" id="profile">
@@ -85,6 +88,11 @@ class UnconnectedAdminPage extends Component {
               <AddBaradi />
             </div>
           </div>
+          {/* <span>
+            <button className="btn btn-dark" >
+              log out
+            </button>
+          </span> */}
         </div>
       )
     } else {

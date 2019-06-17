@@ -11,17 +11,13 @@ class UnconnectedGallery extends Component {
     this.renderImages = this.renderImages.bind(this)
   }
   componentDidMount() {
-    // if (this.props.images.length === 0) {
-    // console.log("length: ", this.props.images)
     if (this.props.images === [] || this.props.images === undefined) {
-      // console.log("empty")
       fetch("http://" + window.location.hostname + ":80/api/getImages")
         .then(response => {
           return response.text()
         })
         .then(response => {
           let parsedResponse = JSON.parse(response)
-          console.log("parsed in gallery: ", parsedResponse)
           this.props.dispatch({
             type: "all-images",
             actionData: parsedResponse
@@ -31,17 +27,14 @@ class UnconnectedGallery extends Component {
   }
 
   renderImages() {
-    // console.log("images in render: ", this.props.images)
     let allImages = this.props.images
     let groupedImages = []
 
     if (this.props.images) {
       allImages.map(group => {
         let rand = Math.floor(Math.random() * group.paths.length)
-        // console.log("group: ", group)
         groupedImages.push({ id: group._id, path: group.paths[rand] })
       })
-      // console.log("grouped array: ", groupedImages)
 
       let columns = [0, 1, 2, 3]
       return (
@@ -50,8 +43,6 @@ class UnconnectedGallery extends Component {
             let len = groupedImages.length
             let end = len / 4
 
-            // console.log("im in column map")
-            console.log("column index: ", index)
             function getImagesInColumn(
               allImages,
               columnIndex,
@@ -63,12 +54,10 @@ class UnconnectedGallery extends Component {
               return allImages.slice(startIndex, endIndex)
             }
             let test = getImagesInColumn(groupedImages, index, end)
-            console.log("test:  ", test)
             return (
               <div key={column} className="column">
                 {test.map(item => {
                   let rand = Math.floor(Math.random() * (500 - 100) + 100)
-                  console.log("ids: ", item.id)
                   return (
                     <Link to={"/images/" + item.id} key={item.id}>
                       <img

@@ -11,7 +11,6 @@ class UnconnectedThree extends Component {
     this.renderBaradi = this.renderBaradi.bind(this)
   }
   componentDidMount() {
-    console.log(this.props.baradiList)
     if (this.props.baradiList === undefined && this.state.baradi.length === 0) {
       fetch("http://" + window.location.hostname + ":80/api/getBaradi")
         .then(response => {
@@ -19,7 +18,6 @@ class UnconnectedThree extends Component {
         })
         .then(response => {
           let parsedRes = JSON.parse(response)
-          console.log("parsed Response: ", parsedRes.baradi)
           this.props.dispatch({
             type: "get-baradi",
             actionData: parsedRes.baradi
@@ -32,7 +30,6 @@ class UnconnectedThree extends Component {
   renderBaradi() {
     if (this.props.baradiList !== undefined) {
       return this.props.baradiList.map(baradi => {
-        console.log("baradi: ", baradi)
         return (
           <Baradi
             path={baradi.path}
@@ -56,7 +53,6 @@ class UnconnectedThree extends Component {
 }
 
 let Three = connect(st => {
-  console.log("states in two: ", st.baradi)
   return { baradiList: st.baradi }
 })(UnconnectedThree)
 export default Three

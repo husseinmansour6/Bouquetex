@@ -39,8 +39,6 @@ class UnconnectedAddSalon extends Component {
       })
       .then(responseBody => {
         let parsed = JSON.parse(responseBody)
-        console.log("parsed in add salon: ", parsed)
-        console.log("formdata in add salon: ", formData)
         if (parsed.length !== 0) {
           alert("Saved Successfully !!")
           this.setState({ typeOfColth: "" })

@@ -9,15 +9,15 @@ class UnconnectecViewData extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      images: ""
+      images: "",
+      title: ""
     }
     this.renderImages = this.renderImages.bind(this)
     this.previewImg = this.previewImg.bind(this)
     this.renderFbShare = this.renderFbShare.bind(this)
+    this.handleTitleChange = this.handleTitleChange.bind(this)
   }
   componentDidMount() {
-    console.log("images: ", this.props.images)
-    console.log("id: ", this.props.match.params.id)
     let arrImages = []
     let idToGet = this.props.match.params.id
     fetch("http://" + window.location.hostname + ":80/api/getImagesGallery", {
@@ -29,63 +29,61 @@ class UnconnectecViewData extends Component {
       })
       .then(response => {
         let parsedResponse = JSON.parse(response)
-        console.log("parsed: ", parsedResponse)
         arrImages = parsedResponse[0].paths
-        console.log("arr images: ", arrImages)
         if (!this.state.images) {
           this.setState({ images: parsedResponse[0].paths })
         }
       })
+  }
 
-    // let item = arrImages.filter(item => item._id === idToGet)
-    // console.log("paths: ", item)
+  handleTitleChange(event) {
+    this.setState({ title: event.target.value })
   }
 
   previewImg(event) {
-    console.log(event.target.tagName)
     let src = ""
     if (event.target.tagName.toUpperCase() == "IMG") {
       src = event.target.src
-      console.log("src: ", src)
       let img = document.getElementById("previewImg")
       img.src = src
     }
   }
   renderFbShare() {
-    console.log("stateSID: ", this.props.stateSid)
     let url =
       "http://" +
       window.location.hostname +
       ":80/images/" +
       this.props.match.params.id
-    let title = "View Gallery"
-    console.log("url: ", url)
+
+    let title = this.state.title
+    if (title.length === 0) {
+      title =
+        "New Gallery Added.. Click on the link below to view it. Welcome to Bouquetex :)"
+    }
 
     if (this.props.stateSid) {
       return (
-        <FacebookShareButton
-          url={url}
-          quote={title}
-          
-        >
-          <FacebookIcon size={40} round />
-        </FacebookShareButton>
+        <div>
+          <input
+            type="text"
+            placeholder="Title"
+            onChange={this.handleTitleChange}
+          />
+          <FacebookShareButton url={url} quote={title}>
+            <FacebookIcon size={40} round />
+          </FacebookShareButton>
+        </div>
       )
     }
   }
 
   renderImages() {
     if (this.state.images) {
-      console.log("state: ", this.state.images)
       let img = document.getElementById("previewImg")
       img.src =
         "http://" + window.location.hostname + ":80" + this.state.images[0]
 
       return this.state.images.map((path, index) => {
-        console.log(
-          "path in render images: ",
-          "http://" + window.location.hostname + ":80" + path
-        )
         return (
           <img
             className="thumb"
@@ -99,8 +97,6 @@ class UnconnectecViewData extends Component {
   }
 
   render() {
-    console.log("stateSID: ", this.props.stateSid)
-
     return (
       <div className="cont-prev">
         <div className="preview">{this.renderImages()}</div>
@@ -113,7 +109,6 @@ class UnconnectecViewData extends Component {
   }
 }
 let ViewData = connect(st => {
-  console.log("state in connect: ", st)
   return { images: st.images, stateSid: st.stateSid }
 })(UnconnectecViewData)
 export default ViewData

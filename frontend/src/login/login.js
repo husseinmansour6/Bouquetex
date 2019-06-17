@@ -15,20 +15,14 @@ class UnconnectedLogin extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
   handlePasswordChange(event) {
-    this.setState({ password: event.target.value })
+    this.setState({ password: event.target.value.toLowerCase() })
   }
   handleUsernameChange(event) {
-    this.setState({ username: event.target.value })
+    this.setState({ username: event.target.value.toLowerCase() })
   }
   handleSubmit(event) {
     event.preventDefault()
-    console.log(
-      "username: ",
-      this.state.username,
-      " password: ",
-      this.state.password
-    )
-    console.log(this.state)
+
     let requestedBody = this.state
     fetch("http://" + window.location.hostname + ":80/api/login", {
       method: "POST",
@@ -38,9 +32,7 @@ class UnconnectedLogin extends Component {
         return resBody.text()
       })
       .then(resBody => {
-        console.log("resbody in second then: ", resBody)
         let parsedResponse = JSON.parse(resBody)
-        console.log("parsed in second then: ", parsedResponse)
         if (!parsedResponse.success) {
           alert(parsedResponse.msg)
         } else {
@@ -54,7 +46,6 @@ class UnconnectedLogin extends Component {
       })
   }
   render() {
-    console.log("store: ", this.props.sessionData)
     if (this.props.sessionData) {
       return <Redirect to="/adminPage" />
     } else
@@ -90,7 +81,6 @@ class UnconnectedLogin extends Component {
 }
 
 let Login = connect(st => {
-  console.log("state in connect: ", st)
   return { sessionData: st.stateSid }
 })(UnconnectedLogin)
 export default Login

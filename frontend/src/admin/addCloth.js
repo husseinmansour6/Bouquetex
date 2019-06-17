@@ -44,8 +44,6 @@ class UnconnectedAddCloth extends Component {
       })
       .then(responseBody => {
         let parsed = JSON.parse(responseBody)
-        console.log("parsed in add cloth: ", parsed)
-        console.log("formdata in add cloth: ", formData)
         if (parsed.length !== 0) {
           alert("Saved Successfully !!")
           this.setState({ costPerMeter: "", typeOfColth: "" })
@@ -54,7 +52,6 @@ class UnconnectedAddCloth extends Component {
             actionData: parsed
           })
         }
-
       })
   }
   render() {
@@ -102,11 +99,8 @@ class UnconnectedAddCloth extends Component {
         </form>
 
         {this.state.items.map(item => {
-          console.log("item data", item)
-          // window.location.hostname is the domain (or IP) from where the webpage was downloaded
           let imagePath =
             "http://" + window.location.hostname + ":80" + item.path
-          console.log("image path", imagePath)
           return (
             <div>
               <img src={imagePath} />

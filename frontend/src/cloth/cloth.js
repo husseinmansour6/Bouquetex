@@ -10,7 +10,6 @@ class UnconnectedCloth extends Component {
     this.deleteCloth = this.deleteCloth.bind(this)
   }
   deleteCloth(id) {
-    console.log("id: ", id)
     fetch("http://" + window.location.hostname + ":80/api/delCloth", {
       method: "POST",
       body: JSON.stringify(id)
@@ -22,7 +21,6 @@ class UnconnectedCloth extends Component {
   }
   generateDeleteBtn() {
     if (this.props.SID) {
-      // console.log("this props: ", this.props)
       return (
         <img
           className="text"

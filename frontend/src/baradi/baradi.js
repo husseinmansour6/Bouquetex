@@ -9,7 +9,6 @@ class UnconnectedBaradi extends Component {
     this.deleteBaradi = this.deleteBaradi.bind(this)
   }
   deleteBaradi(id) {
-    console.log("id: ", id)
     fetch("http://" + window.location.hostname + ":80/api/delBaradi", {
       method: "POST",
       body: JSON.stringify(id)
@@ -21,7 +20,6 @@ class UnconnectedBaradi extends Component {
   }
   generateDeleteBtn() {
     if (this.props.SID) {
-      console.log("this props: ", this.props)
       return (
         <img
           className="text"

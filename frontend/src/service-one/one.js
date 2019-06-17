@@ -11,7 +11,6 @@ class UnconnectedOne extends Component {
     this.renderCloths = this.renderCloths.bind(this)
   }
   componentDidMount() {
-    console.log(this.props.clothsList)
     if (this.props.clothsList === undefined) {
       fetch("http://" + window.location.hostname + ":80/api/getCloths")
         .then(response => {
@@ -19,7 +18,6 @@ class UnconnectedOne extends Component {
         })
         .then(response => {
           let parsedRes = JSON.parse(response)
-          console.log("parsed Response: ", parsedRes.cloths)
           this.props.dispatch({
             type: "get-cloths",
             actionData: parsedRes.cloths
@@ -32,7 +30,6 @@ class UnconnectedOne extends Component {
   renderCloths() {
     if (this.props.clothsList !== undefined) {
       return this.props.clothsList.map(cloth => {
-        console.log("cloth: ", cloth)
         return (
           <Cloth
             path={cloth.path}
@@ -56,7 +53,6 @@ class UnconnectedOne extends Component {
 }
 
 let One = connect(st => {
-  console.log("states in one: ", st.cloths)
   return { clothsList: st.cloths }
 })(UnconnectedOne)
 export default One

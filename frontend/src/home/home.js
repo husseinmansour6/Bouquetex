@@ -16,44 +16,34 @@ class UnconnectedHome extends Component {
   }
   componentDidMount() {
     // if (this.props.images.length === 0) {
-    console.log("length: ", this.props.images)
     if (this.props.images === [] || this.props.images === undefined) {
-      console.log("empty")
       fetch("http://" + window.location.hostname + ":80/api/getImages")
         .then(response => {
           return response.text()
         })
         .then(response => {
           let parsedResponse = JSON.parse(response)
-          console.log("parsed in home: ", parsedResponse)
           this.props.dispatch({
             type: "all-images",
             actionData: parsedResponse
           })
         })
     } else {
-      console.log("not empty")
     }
   }
   renderImages() {
-    console.log(this.props.images)
     let allImages = []
 
     if (this.props.images) {
       this.props.images.map(item => {
-        // console.log("item: ", item)
         item.paths.map(path => {
-          console.log("path: ", path)
           allImages.push(path)
         })
       })
-      console.log(allImages.length)
       let num = [0, 1, 2, 3]
 
       return num.map(n => {
         let rand = Math.floor(Math.random() * allImages.length)
-        console.log(rand)
-        console.log(allImages[rand])
         return (
           <img
             className=""
@@ -65,8 +55,6 @@ class UnconnectedHome extends Component {
     }
   }
   render() {
-    // console.log("w h n: ", "http://" + window.location.hostname)
-    console.log("baradi src: ", baradi)
     return (
       <div>
         <div className="images-transition">
@@ -76,11 +64,7 @@ class UnconnectedHome extends Component {
           <div className="services-info">
             <div className="test">
               <Link to="/service-one">
-                <img
-                  className="s-info-img"
-                  // src={window.location.hostname + "imgs/cloth.jpg/.jpg"}
-                  src={cloth}
-                />
+                <img className="s-info-img" src={cloth} />
                 <span className="alt-text">Cloth</span>
               </Link>
             </div>
@@ -104,7 +88,6 @@ class UnconnectedHome extends Component {
 }
 
 let Home = connect(st => {
-  console.log("state in connect: ", st)
   return { images: st.images }
 })(UnconnectedHome)
 export default Home

@@ -11,7 +11,6 @@ class UnconnectedTwo extends Component {
     this.renderSalons = this.renderSalons.bind(this)
   }
   componentDidMount() {
-    console.log(this.props.salonsList)
     if (this.props.salonsList === undefined && this.state.salons.length === 0) {
       fetch("http://" + window.location.hostname + ":80/api/getSalons")
         .then(response => {
@@ -19,7 +18,6 @@ class UnconnectedTwo extends Component {
         })
         .then(response => {
           let parsedRes = JSON.parse(response)
-          console.log("parsed Response: ", parsedRes.salons)
           this.props.dispatch({
             type: "get-salons",
             actionData: parsedRes.salons
@@ -32,7 +30,6 @@ class UnconnectedTwo extends Component {
   renderSalons() {
     if (this.props.salonsList !== undefined) {
       return this.props.salonsList.map(salon => {
-        console.log("salon: ", salon)
         return (
           <Salon
             path={salon.path}
@@ -49,7 +46,6 @@ class UnconnectedTwo extends Component {
 }
 
 let Two = connect(st => {
-  console.log("states in two: ", st.salons)
   return { salonsList: st.salons }
 })(UnconnectedTwo)
 export default Two

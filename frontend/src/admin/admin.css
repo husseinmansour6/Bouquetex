@@ -1,7 +1,20 @@
-.log-in-warning {
-  position: relative;
-  top: 162px;
-}
 td {
   vertical-align: middle;
+}
+
+@media (max-width: 450px) {
+  .admin-content {
+    position: relative;
+  }
+}
+@media (min-width: 1288px) {
+  .admin-content {
+    position: relative;
+    top: 162px;
+  }
+
+  .log-in-warning {
+    position: relative;
+    top: 162px;
+  }
 }

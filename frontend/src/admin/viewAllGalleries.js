@@ -27,7 +27,6 @@ class UnconnectedGalleries extends Component {
       })
   }
   deleteGallery(id) {
-    console.log("gid: ", id)
 
     fetch("http://" + window.location.hostname + ":80/api/delGallery", {
       method: "POST",
@@ -96,7 +95,6 @@ class UnconnectedGalleries extends Component {
 }
 
 let Galleries = connect(st => {
-  console.log("galleries: ", st.images)
   return { images: st.images }
 })(UnconnectedGalleries)
 export default Galleries
