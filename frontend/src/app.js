@@ -141,7 +141,7 @@ class App extends Component {
             </div>
             <div className="footer" align="bottom">
               <div className="flex-footer" align="centre">
-                <h4 className="spacing">email</h4>
+                <h4 className="spacing">hammudi_33@hotmail.com</h4>
                 <h4 className="spacing">
                   <a
                     href="https://www.facebook.com/bouquetex.bouquetex"

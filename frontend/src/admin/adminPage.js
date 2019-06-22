@@ -39,22 +39,22 @@ class UnconnectedAdminPage extends Component {
 
             <li className="nav-item">
               <a className="nav-link" data-toggle="tab" href="#addImages">
-                Add Images
+                Add produits finaux
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" data-toggle="tab" href="#addCloth">
-                Add Cloth
+                Add Tissu
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" data-toggle="tab" href="#addSalon">
-                Add Salon
+                Add Bois
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" data-toggle="tab" href="#addBaradi">
-                Add Baradi
+                Add Rideaux
               </a>
             </li>
             <li className="nav-item">

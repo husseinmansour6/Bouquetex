@@ -69,7 +69,7 @@ class UnconnectecViewData extends Component {
             placeholder="Title"
             onChange={this.handleTitleChange}
           />
-          <FacebookShareButton url={url} quote={title}>
+          <FacebookShareButton url={url} quote={title} >
             <FacebookIcon size={40} round />
           </FacebookShareButton>
         </div>
