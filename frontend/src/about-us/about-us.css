@@ -1,7 +1,6 @@
 @media (min-width: 1288px) {
   .about-us {
     width: 100%;
-    height: 500px;
     position: relative;
     top: 162px;
     display: flex;
@@ -25,6 +24,7 @@
   .about-text {
     font-family: "Roboto Slab", serif;
     color: #797d7c;
+    margin: 100px 10px 0 10px;
   }
 }
 @media (max-width: 450px) {
